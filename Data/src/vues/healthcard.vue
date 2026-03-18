@@ -1,7 +1,8 @@
 <template>
-<router-link :to = "">
+<RouterLink>
 
-</router-link>
+</RouterLink>
+
 </template>
 
 <script setup>
