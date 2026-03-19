@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2> NYC Health And Mortality </h2>
+    <button></button>
     <p v-for="healthData in healthData">{{ healthData.leading_cause }}</p>
   </div>
 </template>
@@ -17,7 +18,7 @@ async function getData() {
     )
     const data = await response.json()
     healthData.value = data
-    years.value = ['All', '2021', '2020', '2019']
+    years.value = ['All', '2021', '2020', '2019','2018','2017','2016','2015','2014','2013','2012','2011','2010','2009','2008','2007']
   } catch (error) {
     console.log(error)
   }
