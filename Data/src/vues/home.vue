@@ -1,8 +1,8 @@
 <template>
   <div>
     <h2> NYC Health And Mortality </h2>
-    <button></button>
-    <p v-for="healthData in healthData">{{ healthData.leading_cause }}</p>
+    
+    <p v-for="health in healthData">{{ health.leading_cause }}</p>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import { ref, onMounted } from 'vue'
 const healthData = ref([])
 const years = ref([])
-
+const selectedYear = ref('All')
 async function getData() {
   try {
     const response = await fetch(
