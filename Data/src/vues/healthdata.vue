@@ -41,7 +41,6 @@ import {
   CategoryScale, LinearScale, ArcElement 
 } from 'chart.js'
 
-// Register Chart.js components so they work in Vue
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement)
 
 const route = useRoute()
@@ -51,14 +50,12 @@ const error = ref(null)
 
 const getYearlyData = async () => {
   try {
-    // We get the year from the URL (e.g., /healthdata/2021)
     const year = route.params.year 
     const response = await fetch(`https://data.cityofnewyork.us/resource/jb7j-dtam.json?year=${year}`)
     
     if (!response.ok) throw new Error("Failed to load NYC data")
     
     const data = await response.json()
-    // Sort by deaths (highest first) and turn string numbers into actual numbers
     rawData.value = data.sort((a, b) => Number(b.deaths) - Number(a.deaths))
     loading.value = false
   } catch (err) {
@@ -71,7 +68,7 @@ onMounted(() => {
   getYearlyData()
 })
 
-// Bar Chart Logic: Top 5 Causes
+
 const barChartData = computed(() => {
   const topFive = rawData.value.slice(0, 5)
   return {
@@ -84,7 +81,6 @@ const barChartData = computed(() => {
   }
 })
 
-// Pie Chart Logic: Male vs Female
 const pieChartData = computed(() => {
   const maleTotal = rawData.value
     .filter(d => d.sex === 'Male')
