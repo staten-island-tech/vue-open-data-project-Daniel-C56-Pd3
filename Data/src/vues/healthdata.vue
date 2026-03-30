@@ -17,7 +17,7 @@
         </div>
 
         <div class="chart-box">
-          <h3>Deaths by Sex</h3>
+          <h3>Deaths by Gender</h3>
           <Pie :data="pieChartData" />
         </div>
       </div>
